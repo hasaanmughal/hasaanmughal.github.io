@@ -1,0 +1,95 @@
+.stage-1-hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+/* ── Hero Content ── */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+  padding: 0 1vw;
+  pointer-events: none;
+}
+
+/* ── Massive Name ── */
+.hero-name {
+  font-family: var(--font-display), 'Inter', Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(4rem, 15vw, 20rem);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+
+  /* Solar Wave gradient text fill */
+  background: linear-gradient(180deg,
+      var(--solar-4) 0%,
+      var(--solar-3) 35%,
+      var(--solar-2) 70%,
+      var(--solar-1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Soft dark drop shadow to sit perfectly layered above the background fog */
+  filter: drop-shadow(0px 15px 35px rgba(0, 0, 0, 0.85)) drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.5));
+  will-change: filter, transform;
+  transform: translateZ(0);
+}
+
+.text-line {
+  display: block;
+}
+
+/* ── Subtitle row ── */
+.hero-subtitle-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.hero-subtitle {
+  font-size: clamp(0.9rem, 1.4vw, 1.2rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(255, 160, 75, 0.18);
+}
+
+.subtitle-sep {
+  color: rgba(255, 255, 255, 0.25);
+  font-weight: 300;
+  font-size: clamp(0.9rem, 1.4vw, 1.2rem);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero-name {
+    font-size: clamp(3rem, 14vw, 8rem);
+    white-space: normal;
+    word-break: break-all;
+  }
+
+  .hero-subtitle-row {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .subtitle-sep {
+    display: none;
+  }
+}

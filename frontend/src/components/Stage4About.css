@@ -1,0 +1,83 @@
+.stage-4-about {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--canvas-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.stage-4-about::before {
+  content: '';
+  position: absolute;
+  inset: auto 0 -18% 0;
+  height: 42vh;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 20% 45%, rgba(243, 112, 34, 0.28) 0%, rgba(243, 112, 34, 0.08) 24%, transparent 58%),
+    radial-gradient(ellipse at 78% 45%, rgba(255, 152, 0, 0.2) 0%, rgba(255, 152, 0, 0.06) 22%, transparent 54%),
+    radial-gradient(ellipse at 50% 58%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 22%, transparent 58%);
+  filter: blur(44px);
+  opacity: 0.9;
+}
+
+.about-safe {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 100vh;
+  justify-content: center;
+}
+
+.about-node {
+  position: absolute;
+  top: calc(var(--safe-padding) + 8vh);
+  left: var(--safe-padding);
+}
+
+.about-title-block {
+  width: 100%;
+  text-align: center;
+  padding: 0 var(--safe-padding);
+}
+
+.about-title {
+  font-size: clamp(3rem, 12vw, 14rem);
+  color: #000;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+
+.about-greetings {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-top: 1.5rem;
+}
+
+.about-title,
+.stage-4-about .display-text {
+  color: #000;
+}
+
+.about-greeting,
+.stage-4-about .about-greeting {
+  color: #000;
+}
+
+.about-greeting {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+}
+
+@media (max-width: 640px) {
+  .about-greetings {
+    gap: 2rem;
+  }
+}

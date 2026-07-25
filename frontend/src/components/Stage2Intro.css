@@ -1,0 +1,162 @@
+.stage-2-intro {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: transparent;
+  overflow: hidden;
+  padding-bottom: 10vh;
+}
+
+.s2-sticky-strip {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.s2-cloud-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 15vh;
+}
+
+.s2-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.85;
+  mix-blend-mode: screen;
+}
+
+.s2-orb-1 {
+  width: 60vw;
+  height: 40vh;
+
+  top: -10vh;
+  left: -15vw;
+}
+
+.s2-orb-2 {
+  width: 50vw;
+  height: 35vh;
+
+  top: -5vh;
+  right: -10vw;
+}
+
+.s2-orb-3 {
+  width: 55vw;
+  height: 38vh;
+
+  top: -20vh;
+  left: 20vw;
+}
+
+.s2-white-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+  z-index: 1;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 0 3rem;
+  padding: 10vh var(--safe-padding) 0;
+  max-width: 100%;
+  position: relative;
+  z-index: 3;
+}
+
+.intro-left-col {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 0.35rem;
+}
+
+.section-label {
+  color: #aaaaaa;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+}
+
+.intro-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.intro-node {
+  margin-bottom: -1rem;
+}
+
+.intro-headline {
+  font-size: clamp(1.6rem, 2.8vw, 3.2rem);
+  font-weight: 900;
+  color: #000000;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  max-width: 820px;
+}
+
+.intro-divider {
+  width: 100%;
+  height: 18px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 0.25rem;
+}
+
+.intro-divider::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  filter: blur(16px);
+  transform: scaleX(1.08);
+  opacity: 0.8;
+}
+
+.intro-stats {
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.stat-value {
+  font-family: var(--font-body);
+  font-weight: 900;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  color: #000000;
+  line-height: 1;
+}
+
+.stat-label {
+  color: #888888;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+}
+
+@media (max-width: 768px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

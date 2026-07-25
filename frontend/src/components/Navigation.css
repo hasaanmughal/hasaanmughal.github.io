@@ -1,0 +1,103 @@
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.navigation__inner {
+  width: 100%;
+}
+
+.navigation__inner--spread {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 24px 32px;
+}
+
+.navigation__inner--branded {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--safe-padding);
+}
+
+.about-nav-inner {
+  justify-content: space-between;
+  min-height: 100px;
+}
+
+.nav-slot {
+  pointer-events: auto;
+}
+
+.about-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-slot--start {
+  justify-self: start;
+}
+
+.nav-slot--center {
+  justify-self: center;
+}
+
+.nav-slot--end {
+  justify-self: end;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: inherit;
+  font-family: 'JetBrains Mono', 'Space Mono', monospace;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: opacity 0.25s ease;
+  cursor: pointer;
+}
+
+.navigation--about .nav-link {
+  color: #000000;
+}
+
+.nav-link:hover {
+  opacity: 0.55;
+}
+
+.nav-logo {
+  pointer-events: auto;
+  text-decoration: none;
+  color: inherit;
+  font-size: clamp(0.75rem, 1.2vw, 1rem);
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.nav-group {
+  display: flex;
+  gap: 2rem;
+  pointer-events: auto;
+}
+
+@media (max-width: 640px) {
+  .navigation__inner--spread {
+    padding: 16px 16px;
+  }
+
+  .nav-link {
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+  }
+
+  .nav-group {
+    gap: 0.75rem;
+  }
+}

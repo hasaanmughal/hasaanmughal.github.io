@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800;900&family=JetBrains+Mono:wght@400;700&family=Syncopate:wght@400;700&display=swap');
+
+:root {
+  --solar-1: #3a0a02; /* deep maroon core */
+  --solar-2: #ff5a1f; /* solar orange */
+  --solar-3: #ffb347; /* warm gold */
+  --solar-4: #fff1d6; /* pale highlight */
+  --wave-cycle: 140vh; /* height of one full black→orange→black cycle */
+
+  --void-black: #000000;
+  --canvas-white: #ffffff;
+  --canvas-light-gray: #f5f5f5;
+  --solar-flare-start: #f37022;
+  --solar-flare-end: #ff9800;
+  --electric-cyan: #00c2ff;
+  --electric-blue-deep: #0066cc;
+  --ether-blue: #7ce3ff;
+
+  --font-display: 'Syncopate', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --safe-padding: 40px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  font-family: var(--font-body);
+  background-color: var(--void-black);
+  color: var(--canvas-white);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.app-container {
+  width: 100%;
+  position: relative;
+  isolation: isolate;
+  background: var(--void-black);
+}
+
+/* ── Solar Wave Theme Elements ── */
+
+/* Wrapper: wraps the ENTIRE homepage, all sections included, not just the hero */
+.wave-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;   /* ensures the wave wrapper covers at least the full viewport height */
+  background: #000;
+  isolation: isolate;
+}
+
+/* The glow layer: blurred, sticky in viewport as user scrolls */
+.hero-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  filter: blur(70px) saturate(1.15);
+  pointer-events: none;
+  /* overflow: hidden;  <-- removed, this was clipping the blob bleed */
+}
+
+/* This second layer carries the repeating mask down the FULL page height,
+   sitting absolutely within .wave-container (which is as tall as the page) */
+.hero-glow-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-mask-image: repeating-linear-gradient(to bottom,
+      transparent 0, transparent calc(var(--wave-cycle) * 0.05),
+      black calc(var(--wave-cycle) * 0.35), black calc(var(--wave-cycle) * 0.80),
+      transparent var(--wave-cycle));
+  mask-image: repeating-linear-gradient(to bottom,
+      transparent 0, transparent calc(var(--wave-cycle) * 0.05),
+      black calc(var(--wave-cycle) * 0.35), black calc(var(--wave-cycle) * 0.80),
+      transparent var(--wave-cycle));
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.blob.b1 {
+  width: 70%;
+  height: 65%;
+  left: -10%;
+  bottom: -15%;   /* was: top: 15% */
+  background: radial-gradient(circle at 50% 50%, var(--solar-2) 0%, var(--solar-1) 60%, transparent 75%);
+  animation: driftA 6s ease-in-out infinite alternate;
+}
+
+.blob.b2 {
+  width: 60%;
+  height: 55%;
+  right: -15%;
+  bottom: -20%;   /* was: top: 25% */
+  background: radial-gradient(circle at 50% 50%, var(--solar-3) 0%, var(--solar-2) 55%, transparent 75%);
+  animation: driftB 5s ease-in-out infinite alternate;
+}
+
+.blob.b3 {
+  width: 45%;
+  height: 40%;
+  left: 30%;
+  bottom: -25%;   /* was: top: 35% */
+  background: radial-gradient(circle at 50% 50%, var(--solar-4) 0%, var(--solar-3) 50%, transparent 70%);
+  opacity: 0.85;
+  animation: driftC 4s ease-in-out infinite alternate;
+}
+
+@keyframes driftA {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(8%, -4%) scale(1.08); }
+  100% { transform: translate(-6%, 3%) scale(0.96); }
+}
+
+@keyframes driftB {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-10%, -6%) scale(1.05); }
+  100% { transform: translate(6%, 4%) scale(0.98); }
+}
+
+@keyframes driftC {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-14%, -2%) scale(1.12); }
+  100% { transform: translate(10%, 5%) scale(0.94); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* ── Utility Classes ── */
+
+.safe-area {
+  padding-top: var(--safe-padding);
+  padding-left: var(--safe-padding);
+  padding-right: var(--safe-padding);
+  width: 100%;
+  position: relative;
+}
+
+.structural-node {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: currentColor;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.display-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+}
+
+.body-text {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.title-text {
+  font-family: var(--font-body);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.fluid-orange-bg {
+  background: linear-gradient(135deg, var(--solar-flare-start) 0%, var(--solar-flare-end) 100%);
+}
+
+/* ── Section Contrast (scroll-driven theme) ── */
+
+.section-transition-contrast {
+  position: relative;
+}
+
+.app-container[data-cloud-state="hero"] .section-transition-contrast,
+.app-container[data-cloud-state="canvas"] .section-transition-contrast,
+.app-container[data-cloud-state="contact"] .section-transition-contrast {
+  --section-contrast-text: #ffffff;
+  --section-contrast-muted: rgba(255, 255, 255, 0.55);
+}
+
+.app-container[data-cloud-state="hero"] .section-transition-contrast .title-text,
+.app-container[data-cloud-state="hero"] .section-transition-contrast .display-text,
+.app-container[data-cloud-state="hero"] .section-transition-contrast .body-text,
+.app-container[data-cloud-state="hero"] .section-transition-contrast .mono-label,
+.app-container[data-cloud-state="hero"] .section-transition-contrast a,
+.app-container[data-cloud-state="hero"] .section-transition-contrast button,
+.app-container[data-cloud-state="canvas"] .section-transition-contrast .title-text,
+.app-container[data-cloud-state="canvas"] .section-transition-contrast .display-text,
+.app-container[data-cloud-state="canvas"] .section-transition-contrast .body-text,
+.app-container[data-cloud-state="canvas"] .section-transition-contrast .mono-label,
+.app-container[data-cloud-state="canvas"] .section-transition-contrast a,
+.app-container[data-cloud-state="canvas"] .section-transition-contrast button,
+.app-container[data-cloud-state="contact"] .section-transition-contrast .title-text,
+.app-container[data-cloud-state="contact"] .section-transition-contrast .display-text,
+.app-container[data-cloud-state="contact"] .section-transition-contrast .body-text,
+.app-container[data-cloud-state="contact"] .section-transition-contrast .mono-label,
+.app-container[data-cloud-state="contact"] .section-transition-contrast a,
+.app-container[data-cloud-state="contact"] .section-transition-contrast button {
+  color: var(--section-contrast-text);
+}
+
+.app-container[data-cloud-state="hero"] .section-transition-contrast .section-label,
+.app-container[data-cloud-state="hero"] .section-transition-contrast .stat-label,
+.app-container[data-cloud-state="hero"] .section-transition-contrast .about-greeting,
+.app-container[data-cloud-state="hero"] .section-transition-contrast .social-label,
+.app-container[data-cloud-state="canvas"] .section-transition-contrast .section-label,
+.app-container[data-cloud-state="canvas"] .section-transition-contrast .stat-label,
+.app-container[data-cloud-state="canvas"] .section-transition-contrast .about-greeting,
+.app-container[data-cloud-state="canvas"] .section-transition-contrast .social-label,
+.app-container[data-cloud-state="contact"] .section-transition-contrast .section-label,
+.app-container[data-cloud-state="contact"] .section-transition-contrast .stat-label,
+.app-container[data-cloud-state="contact"] .section-transition-contrast .about-greeting,
+.app-container[data-cloud-state="contact"] .section-transition-contrast .social-label {
+  color: var(--section-contrast-muted);
+}
+
+/* ── Grid Overlay ── */
+
+.grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 25% 100%;
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 50%, transparent 100%);
+  -webkit-mask-size: 100% 200%;
+  animation: gridFlowUp 4s linear infinite;
+}
+
+.grid-overlay--light {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+}
+
+@keyframes gridFlowUp {
+  0% {
+    -webkit-mask-position: 0 100%;
+  }
+  100% {
+    -webkit-mask-position: 0 -100%;
+  }
+}
+
+.section-label {
+  color: #aaaaaa;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+}

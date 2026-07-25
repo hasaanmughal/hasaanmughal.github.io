@@ -1,0 +1,85 @@
+.stage-5-projects {
+  width: 100%;
+  min-height: 100vh;
+  background: transparent;
+  padding-bottom: 10vh;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.stage-5-projects::before {
+  content: '';
+  position: absolute;
+  inset: -10% 0 auto 0;
+  height: 38vh;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 18% 45%, rgba(243, 112, 34, 0.2) 0%, rgba(243, 112, 34, 0.06) 20%, transparent 52%),
+    radial-gradient(ellipse at 80% 38%, rgba(255, 152, 0, 0.16) 0%, rgba(255, 152, 0, 0.06) 18%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.1) 20%, transparent 54%);
+  filter: blur(42px);
+  opacity: 0.95;
+}
+
+.projects-header {
+  padding-top: 12vh;
+  padding-bottom: 4vh;
+}
+
+.projects-mega-title {
+  font-size: clamp(2.5rem, 10vw, 9rem);
+  color: #000;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  width: 100%;
+}
+
+.projects-categories {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 0 2rem;
+}
+
+.projects-cat {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.projects-cat:hover,
+.projects-cat--active {
+  color: #000;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem 2rem;
+  padding-bottom: 8vh;
+}
+
+.projects-loading {
+  grid-column: 1 / -1;
+  color: #888;
+  text-align: center;
+  padding: 4rem 0;
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-categories {
+    justify-content: center;
+  }
+}

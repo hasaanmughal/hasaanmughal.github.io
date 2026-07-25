@@ -1,0 +1,212 @@
+.stage-3-bio {
+  width: 100%;
+  background: var(--canvas-white);
+}
+
+.bio-row {
+  padding: 8vh var(--safe-padding);
+}
+
+.bio-row--white {
+  background: var(--canvas-white);
+}
+
+.bio-row--gray {
+  background: var(--canvas-light-gray);
+}
+
+.bio-divider {
+  width: 100%;
+  height: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bio-divider::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 28% 50%, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.06) 18%, transparent 42%),
+    radial-gradient(ellipse at 74% 50%, rgba(243, 112, 34, 0.16) 0%, rgba(243, 112, 34, 0.06) 20%, transparent 44%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.16) 18%, transparent 42%);
+  filter: blur(18px);
+  transform: scaleX(1.08);
+  opacity: 0.9;
+}
+
+.bio-grid {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 0 3rem;
+  align-items: start;
+}
+
+.stage-3-bio .body-text,
+.stage-3-bio .title-text,
+.stage-3-bio .mono-label,
+.stage-3-bio .section-label {
+  color: #000;
+}
+
+.bio-intro-text {
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+  font-weight: 600;
+  color: #000;
+  line-height: 1.65;
+  max-width: 720px;
+}
+
+.bio-intro-quote {
+  display: inline-block;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: #000;
+}
+
+.education-row {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.education-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  min-width: 180px;
+}
+
+.education-logo {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #fff;
+  overflow: hidden;
+  background: #111;
+}
+
+.education-logo--image {
+  padding: 0.4rem;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.education-logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.education-degree {
+  font-size: 1.1rem;
+  color: #000;
+}
+
+.education-meta {
+  color: #888;
+  font-size: 0.65rem;
+}
+
+.registry {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem 3rem;
+  max-width: 420px;
+}
+
+.registry-labels,
+.registry-values {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.registry-key {
+  color: #888;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+}
+
+.registry-value {
+  font-size: 1rem;
+  color: #000;
+}
+
+.bio-anchor-dot {
+  margin-top: 2rem;
+}
+
+.skills-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 560px;
+}
+
+.skill-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.skill-name {
+  color: #666;
+  font-size: 0.72rem;
+}
+
+.skill-bar-track {
+  position: relative;
+  height: 14px;
+  background: #e8e8e8;
+  display: flex;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: #000;
+}
+
+.skill-bar-tip {
+  flex: 1;
+  height: 100%;
+  background: #ccc;
+}
+
+.skill-locked {
+  margin-top: 1.5rem;
+  padding: 1.25rem 2rem;
+  background: #9e9e9e;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.skill-locked span {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+}
+
+@media (max-width: 768px) {
+  .bio-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .skill-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
