@@ -34,6 +34,33 @@
   pointer-events: auto;
 }
 
+.nav-slot--end {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  color: var(--page-text);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+  opacity: 0.85;
+}
+
+.theme-toggle-btn:hover {
+  opacity: 1;
+  transform: scale(1.15);
+  background-color: var(--page-surface);
+}
+
 .about-nav-group {
   display: flex;
   align-items: center;
@@ -56,16 +83,16 @@
   text-decoration: none;
   color: inherit;
   font-family: 'JetBrains Mono', 'Space Mono', monospace;
-  font-size: 1.05rem;
+  font-size: 0.63rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
 }
 
 .navigation--about .nav-link {
-  color: #000000;
+  color: var(--page-text);
 }
 
 .nav-link:hover {
@@ -87,6 +114,35 @@
   pointer-events: auto;
 }
 
+.navigation--hero-collapsed .navigation__inner--spread {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 2rem);
+  width: 100%;
+}
+
+.navigation--hero-collapsed .nav-slot {
+  transform: translateX(0);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navigation--hero-collapsed .nav-slot--start {
+  transform: translateX(1.4rem);
+}
+
+.navigation--hero-collapsed .nav-slot--center {
+  transform: translateX(0.8rem);
+}
+
+.navigation--hero-collapsed .nav-slot--end {
+  transform: translateX(0.25rem);
+}
+
+.navigation--hero-collapsed .nav-link {
+  opacity: 1;
+}
+
 @media (max-width: 640px) {
   .navigation__inner--spread {
     padding: 16px 16px;
@@ -99,5 +155,32 @@
 
   .nav-group {
     gap: 0.75rem;
+  }
+}
+
+/* ── Mobile-only: strip all navbar entry & scroll animations ── */
+@media (max-width: 768px) {
+  /* Disable slot sliding transitions — nav stays static */
+  .navigation--hero-collapsed .nav-slot {
+    transition: none !important;
+  }
+
+  /* Immediately resolve any residual transform offsets */
+  .navigation--hero-collapsed .nav-slot--start,
+  .navigation--hero-collapsed .nav-slot--center,
+  .navigation--hero-collapsed .nav-slot--end {
+    transform: none !important;
+  }
+
+  /* No fade-in delay on nav-links */
+  .nav-link {
+    transition: opacity 0.15s ease !important;
+  }
+
+  /* GPU-accelerate the fixed navbar to avoid compositor lag */
+  .navigation {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
   }
 }

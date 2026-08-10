@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: var(--canvas-white);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,17 +11,7 @@
 }
 
 .stage-4-about::before {
-  content: '';
-  position: absolute;
-  inset: auto 0 -18% 0;
-  height: 42vh;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse at 20% 45%, rgba(243, 112, 34, 0.28) 0%, rgba(243, 112, 34, 0.08) 24%, transparent 58%),
-    radial-gradient(ellipse at 78% 45%, rgba(255, 152, 0, 0.2) 0%, rgba(255, 152, 0, 0.06) 22%, transparent 54%),
-    radial-gradient(ellipse at 50% 58%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 22%, transparent 58%);
-  filter: blur(44px);
-  opacity: 0.9;
+  display: none;
 }
 
 .about-safe {
@@ -49,26 +39,62 @@
 
 .about-title {
   font-size: clamp(3rem, 12vw, 14rem);
-  color: #000;
+  color: inherit;
   line-height: 0.9;
   letter-spacing: -0.03em;
 }
 
-.about-greetings {
+.about-social-tier {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  position: relative;
+  z-index: 20;
+}
+
+.about-social-row {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 4rem;
-  margin-top: 1.5rem;
+  gap: 1.5rem;
 }
 
-.about-title,
-.stage-4-about .display-text {
-  color: #000;
+.about-social-row .social-link {
+  color: var(--page-muted);
 }
 
-.about-greeting,
-.stage-4-about .about-greeting {
-  color: #000;
+.about-social-row .social-link:hover {
+  color: var(--page-text);
+}
+
+.about-social-row .social-icon {
+  width: 4.8rem;
+  height: 4.8rem;
+  display: block;
+  filter: grayscale(1) brightness(0.7);
+  transition: filter 0.2s, transform 0.2s;
+}
+
+[data-theme="light"] .about-social-row .social-icon {
+  filter: grayscale(1) invert(1) brightness(0.3);
+}
+
+.about-social-row .social-link:hover .social-icon {
+  filter: grayscale(0) brightness(1);
+  transform: scale(1.05);
+}
+
+[data-theme="light"] .about-social-row .social-link:hover .social-icon {
+  filter: grayscale(0) invert(0) brightness(1);
+}
+
+.about-social-tier .social-label {
+  color: var(--page-muted);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .about-greeting {

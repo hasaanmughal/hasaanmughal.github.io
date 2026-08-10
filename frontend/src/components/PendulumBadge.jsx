@@ -7,6 +7,24 @@ const PendulumBadge = () => {
   const engineRef = useRef(null);
   const [state, setState] = useState(null);
   const [staticMode, setStaticMode] = useState(false);
+  const [theme, setTheme] = useState('dark');
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const updateTheme = () => setTheme(root.getAttribute('data-theme') || 'dark');
+
+    updateTheme();
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+          updateTheme();
+        }
+      }
+    });
+
+    observer.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -99,13 +117,15 @@ const PendulumBadge = () => {
     };
   }, []);
 
+  const badgeImage = theme === 'light' ? '/chainlocket-lightmodeimg.jpeg' : '/chainlocket.jpg.jpeg';
+
   if (staticMode) {
     return (
       <div className="pendulum-badge pendulum-badge--static" ref={containerRef}>
         <div className="pendulum-strap pendulum-strap--static" />
         <div className="pendulum-clip" />
         <div className="pendulum-card">
-          <img className="pendulum-photo" src="/chainlocket.jpg.jpeg" alt="Chain locket" loading="lazy" />
+          <img className="pendulum-photo" src={badgeImage} alt="Chain locket" loading="lazy" />
         </div>
       </div>
     );
@@ -151,7 +171,7 @@ const PendulumBadge = () => {
               transform: `translate(-50%, 0) rotate(${badge.angle}rad)`,
             }}
           >
-            <img className="pendulum-photo" src="/chainlocket.jpg.jpeg" alt="Chain locket" loading="lazy" />
+            <img className="pendulum-photo" src={badgeImage} alt="Chain locket" loading="lazy" />
           </div>
         </>
       )}

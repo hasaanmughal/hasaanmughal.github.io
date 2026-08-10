@@ -1,14 +1,15 @@
 export const capabilities = [
-  'User Research',
-  'UX/UI Design',
-  'Website Design',
-  '3D Development',
-  'Graphic Design',
+  'AI AUTOMATION',
+  'WEB DEVELOPMENT',
+  'PYTHON DEVELOPMENT',
+  'WEB + APP DESIGN',
+  'UX/UI + PROTOTYPING',
 ];
 
 export const categories = [
-  'USER RESEARCH',
-  'WEB DESIGN',
-  'UX/UI',
-  'GAME DESIGN',
+  'AI AUTOMATION',
+  'WEB DEVELOPMENT',
+  'PYTHON DEVELOPMENT',
+  'WEB + APP DESIGN',
+  'UX/UI + PROTOTYPING',
 ];

@@ -1,6 +1,6 @@
 export const bioContent = {
   introduction:
-    'I’m Hassaan, a developer who refuses to build at yesterday’s pace. I specialize in AI Engineering and highly optimized MERN backends. By treating AI as a collaborative engine rather than a shortcut, I execute sprint-style development that slashes deployment times without sacrificing database integrity, security, or HCI-grade user experience. "You bring the vision. I’ll bring the engine."',
+    'Hi, I’m Hassaan, a developer who refuses to build at yesterday’s pace. I specialize in AI Engineering and highly optimized MERN backends. By treating AI as a collaborative engine rather than a shortcut, I execute sprint-style development that slashes deployment times without sacrificing database integrity, security, or HCI-grade user experience. "You bring the vision. I’ll bring the engine."',
 
   education: [
     {
@@ -32,10 +32,10 @@ export const bioContent = {
   ],
 
   skills: [
-    { name: 'Design', level: 92 },
-    { name: 'Coding', level: 78 },
-    { name: 'Creativity', level: 95 },
-    { name: 'Research', level: 88 },
+    { name: 'Coding', level: 87 },
+    { name: 'Design', level: 82 },
+    { name: 'Creativity', level: 90 },
+    { name: 'Research', level: 80 },
     { name: 'Prototyping', level: 85 },
   ],
 };

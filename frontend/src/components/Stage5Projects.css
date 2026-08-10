@@ -29,7 +29,7 @@
 
 .projects-mega-title {
   font-size: clamp(2.5rem, 10vw, 9rem);
-  color: #000;
+  color: var(--page-text);
   line-height: 0.95;
   letter-spacing: -0.04em;
   width: 100%;
@@ -48,7 +48,7 @@
 .projects-cat {
   background: none;
   border: none;
-  color: #888;
+  color: var(--page-muted);
   font-size: 0.65rem;
   letter-spacing: 0.18em;
   cursor: pointer;
@@ -57,7 +57,7 @@
 
 .projects-cat:hover,
 .projects-cat--active {
-  color: #000;
+  color: var(--page-text);
 }
 
 .projects-grid {
