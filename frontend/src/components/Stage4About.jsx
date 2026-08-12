@@ -5,7 +5,7 @@ import PendulumBadge from './PendulumBadge';
 import './Stage4About.css';
 
 const SOCIAL = {
-  github: 'https://github.com/cookhassaanmughal',
+  github: 'https://github.com/hasaanmughal',
   linkedin: 'https://www.linkedin.com/in/hassaan-mughal-605603249/',
   instagram: 'https://www.instagram.com/hasaannmughal/',
   twitter: 'https://x.com/hassaanmughal_',
