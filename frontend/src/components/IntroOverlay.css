@@ -1,0 +1,62 @@
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.75s ease-in-out, transform 0.75s ease-in-out;
+}
+
+.intro-overlay--exit {
+  opacity: 0;
+  transform: translateY(-12%);
+  pointer-events: none;
+}
+
+.intro-overlay__content {
+  text-align: center;
+  max-width: 90%;
+  padding: 0 1rem;
+}
+
+.intro-overlay__greeting,
+.intro-overlay__native {
+  color: #ffffff;
+  margin: 0;
+  font-weight: 500;
+  text-shadow: 0 0 22px rgba(255, 255, 255, 0.1);
+  line-height: 1.1;
+}
+
+.intro-overlay__greeting {
+  font-size: clamp(3rem, 7vw, 6rem);
+  letter-spacing: 0.02em;
+  opacity: 0;
+  animation: introFade 0.18s ease-in-out forwards;
+}
+
+.intro-overlay__native {
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  margin-top: 1rem;
+  letter-spacing: 0.03em;
+  opacity: 0;
+  animation: introFade 0.18s ease-in-out forwards;
+  animation-delay: 0.05s;
+}
+
+@keyframes introFade {
+  from {
+    opacity: 0;
+    transform: translateY(18%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

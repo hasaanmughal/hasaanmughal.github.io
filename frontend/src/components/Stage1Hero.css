@@ -1,0 +1,139 @@
+.stage-1-hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+/* ── Hero Content ── */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+  padding: 0 1vw;
+  pointer-events: none;
+}
+
+/* ── Massive Name ── */
+.hero-name {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 60;
+  font-family: var(--font-display), 'Inter', Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(4rem, 15vw, 20rem);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  transition: top 0.8s cubic-bezier(0.22, 1, 0.36, 1), left 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), font-size 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Dynamic cyan-to-text color animation */
+  background: linear-gradient(90deg, #52CAFA 0%, var(--page-text) 50%, #52CAFA 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: heroColorShift 4s ease-in-out infinite;
+
+  /* Soft dark drop shadow to sit perfectly layered above the background fog */
+  filter: drop-shadow(0px 15px 35px rgba(0, 0, 0, 0.85)) drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.5));
+  will-change: top, left, transform, font-size, opacity;
+}
+
+.hero-name--collapsed {
+  top: 24px;
+  left: 32px;
+  transform: translate(0, 0);
+  font-size: clamp(0.9rem, 1.4vw, 1.15rem);
+  opacity: 1;
+}
+
+.text-line-mobile {
+  display: none;
+}
+
+/* ── Subtitle row ── */
+.hero-subtitle-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.hero-subtitle {
+  font-size: clamp(0.9rem, 1.4vw, 1.2rem);
+  font-weight: 450;
+  color: var(--page-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(103, 64, 31, 0.18);
+}
+
+.subtitle-sep {
+  color: var(--page-muted);
+  font-weight: 300;
+  font-size: clamp(0.9rem, 1.4vw, 1.2rem);
+}
+
+/* ── Responsive ── */
+@keyframes heroColorShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-name {
+    /* Ideal fit font size for mobile screens so each word fits cleanly on a single line */
+    font-size: clamp(2rem, 9.5vw, 3.8rem);
+    line-height: 1.1;
+    white-space: nowrap;
+    text-align: center;
+
+    /* Strip ALL entry & scroll animations — strictly static on mobile */
+    transition: none !important;
+    animation: heroColorShift 4s ease-in-out infinite; /* keep colour only */
+    /* GPU hardware acceleration to prevent repaint lag */
+    transform: translate(-50%, -50%) translateZ(0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+  }
+
+  .text-line-mobile {
+    display: block;
+  }
+
+  /* Collapsed state: no animated transition, snap immediately */
+  .hero-name--collapsed {
+    transition: none !important;
+    transform: translate(0, 0) translateZ(0);
+  }
+
+  .hero-name--collapsed .text-line-mobile {
+    display: none;
+  }
+
+  .hero-subtitle-row {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .subtitle-sep {
+    display: none;
+  }
+}

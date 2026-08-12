@@ -1,0 +1,17 @@
+export const techStack = [
+  { id: 'figma', name: 'Figma', image: '/icons/figma-logo.svg' },
+  { id: 'canva', name: 'Canva', image: '/icons/canva-logo.svg' },
+  { id: 'python', name: 'Python', image: '/icons/python-logo.svg' },
+  { id: 'cpp', name: 'C++', image: '/icons/c-plus-plus-svgrepo-com.svg' },
+  { id: 'js', name: 'JavaScript', image: '/icons/javascript.svg' },
+  { id: 'nodejs', name: 'Node.js', image: '/icons/node-js-.svg' },
+  { id: 'mongodb', name: 'MongoDB', image: '/icons/mongodb-svgrepo-com.svg' },
+  { id: 'django', name: 'Django', image: '/icons/django-svgrepo-com.svg' },
+  { id: 'postgresql', name: 'PostgreSQL', image: '/icons/postgresql-svgrepo-com.svg' },
+  { id: 'mysql', name: 'MySQL', image: '/icons/mysql-svgrepo-com.svg' },
+  { id: 'react', name: 'React', image: '/icons/react-logo.svg' },
+  { id: 'typescript', name: 'TypeScript', image: '/icons/typescript-svgrepo-com.svg' },
+  { id: 'docker', name: 'Docker', image: '/icons/docker-svgrepo-com.svg' },
+  { id: 'aws', name: 'AWS', image: '/icons/aws-svgrepo-com.svg' },
+  { id: 'github', name: 'GitHub', image: '/icons/github-logo.svg' },
+];

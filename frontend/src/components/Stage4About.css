@@ -1,0 +1,109 @@
+.stage-4-about {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.stage-4-about::before {
+  display: none;
+}
+
+.about-safe {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 100vh;
+  justify-content: center;
+}
+
+.about-node {
+  position: absolute;
+  top: calc(var(--safe-padding) + 8vh);
+  left: var(--safe-padding);
+}
+
+.about-title-block {
+  width: 100%;
+  text-align: center;
+  padding: 0 var(--safe-padding);
+}
+
+.about-title {
+  font-size: clamp(3rem, 12vw, 14rem);
+  color: inherit;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+
+.about-social-tier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  position: relative;
+  z-index: 20;
+}
+
+.about-social-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.about-social-row .social-link {
+  color: var(--page-muted);
+}
+
+.about-social-row .social-link:hover {
+  color: var(--page-text);
+}
+
+.about-social-row .social-icon {
+  width: 4.8rem;
+  height: 4.8rem;
+  display: block;
+  filter: grayscale(1) brightness(0.7);
+  transition: filter 0.2s, transform 0.2s;
+}
+
+[data-theme="light"] .about-social-row .social-icon {
+  filter: grayscale(1) invert(1) brightness(0.3);
+}
+
+.about-social-row .social-link:hover .social-icon {
+  filter: grayscale(0) brightness(1);
+  transform: scale(1.05);
+}
+
+[data-theme="light"] .about-social-row .social-link:hover .social-icon {
+  filter: grayscale(0) invert(0) brightness(1);
+}
+
+.about-social-tier .social-label {
+  color: var(--page-muted);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.about-greeting {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+}
+
+@media (max-width: 640px) {
+  .about-greetings {
+    gap: 2rem;
+  }
+}
