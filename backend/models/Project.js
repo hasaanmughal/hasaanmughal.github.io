@@ -13,6 +13,9 @@ const ProjectSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  url: {
+    type: String,
+  },
   category: {
     type: String,
     default: 'UX/UI',

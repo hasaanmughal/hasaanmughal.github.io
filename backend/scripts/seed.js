@@ -30,6 +30,13 @@ const seedProjects = [
     imageUrl: '/battle-city-AI.png',
     category: 'GAME DESIGN',
   },
+  {
+    title: 'FINDMYPET',
+    tags: ['MERN'],
+    imageUrl: '/findmypet.png',
+    category: 'WEB DEVELOPMENT',
+    url: 'https://findmypetplease.vercel.app/',
+  },
 ];
 
 async function seed() {

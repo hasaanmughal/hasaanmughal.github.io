@@ -40,4 +40,12 @@ export const fallbackProjects = [
     imageUrl: '/battle-city-AI.png',
     category: 'GAME DESIGN',
   },
+  {
+    _id: '5',
+    title: 'FINDMYPET',
+    tags: ['MERN'],
+    imageUrl: '/findmypet.png',
+    category: 'WEB DEVELOPMENT',
+    url: 'https://findmypetplease.vercel.app/',
+  },
 ];

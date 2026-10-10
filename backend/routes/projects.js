@@ -14,12 +14,13 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const { title, tags, imageUrl, category } = req.body;
+    const { title, tags, imageUrl, category, url } = req.body;
     const newProject = new Project({
       title,
       tags,
       imageUrl,
       category,
+      url,
     });
     const project = await newProject.save();
     res.json(project);

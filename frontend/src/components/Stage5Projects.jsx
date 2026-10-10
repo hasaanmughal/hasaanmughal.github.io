@@ -40,10 +40,13 @@ const Stage5Projects = () => {
     }
     return project;
   });
+  const fallbackFindMyPet = fallbackProjects.find((project) => project.title === 'FINDMYPET');
+  const projectsWithoutFindMyPet = normalizedProjects.filter((project) => project.title !== fallbackFindMyPet.title);
+  const projectsWithFindMyPetFirst = [fallbackFindMyPet, ...projectsWithoutFindMyPet];
 
   const filtered = activeCategory
-    ? normalizedProjects.filter((p) => p.category === activeCategory)
-    : normalizedProjects;
+    ? projectsWithFindMyPetFirst.filter((p) => p.category === activeCategory)
+    : projectsWithFindMyPetFirst;
 
   return (
     <section className="stage-5-projects section-transition-contrast" id="projects" aria-labelledby="projects-heading">
